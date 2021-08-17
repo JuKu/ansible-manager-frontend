@@ -2,6 +2,13 @@ ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
 
+/* set max width of menu */
+@media screen and (min-width: 1000px) {
+  .main-menu {
+    max-width: 100px;
+  }
+}
+
 ion-menu.md ion-content {
   --padding-start: 8px;
   --padding-end: 8px;
