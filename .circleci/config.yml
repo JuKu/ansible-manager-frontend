@@ -60,7 +60,6 @@ jobs:
           name: Push docker image for manager-frontend
           command: docker push jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest
 
-
 workflows:
   test_my_app:
     jobs:
