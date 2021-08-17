@@ -7,7 +7,7 @@ orbs:
 dependencies:
   pre:
     - npm install npm@latest -g # Should fix bug in ng test
-    - npm install angular-cli@latest -g
+#    - npm install angular-cli@latest -g
 
 jobs:
   build-and-test:
