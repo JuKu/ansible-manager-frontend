@@ -52,13 +52,13 @@ jobs:
           version: 20.10.6
       - run:
           name: Build docker image for manager-frontend
-          command: docker build -t jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest -f Dockerfile .
+          command: docker build -t jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest -f Dockerfile .
       - run:
           name: Docker login
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - run:
           name: Push docker image for manager-frontend
-          command: docker push jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest
+          command: docker push jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest
 
 workflows:
   test_my_app:
