@@ -59,6 +59,27 @@ jobs:
       - run:
           name: Push docker image for manager-frontend
           command: docker push jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest
+      - run:
+          name: Create release tag
+          command: docker tag jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest jukusoft/anman-frontend:${CIRCLE_TAG}
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+      - run:
+          name: Push release to Docker Hub
+          command: docker push jukusoft/anman-frontend:${CIRCLE_TAG}
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+
 
 workflows:
   test_my_app:
