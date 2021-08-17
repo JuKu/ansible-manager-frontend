@@ -53,12 +53,12 @@ jobs:
       - run:
           name: Build docker image for manager-frontend
           command: docker build -t jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest -f Dockerfile .
-#      - run:
-#          name: Docker login
-#          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#      - run:
-#          name: Push docker image for manager-frontend
-#          command: docker push jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest
+      - run:
+          name: Docker login
+          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - run:
+          name: Push docker image for manager-frontend
+          command: docker push jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest
 
 
 workflows:
