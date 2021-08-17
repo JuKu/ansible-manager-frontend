@@ -13,7 +13,7 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-        command: ng test --watch false --single-run
+          command: ng test --watch false --single-run
 #          command: npm run test --watch false --single-run
 
 #      - setup_remote_docker:
