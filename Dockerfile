@@ -6,6 +6,9 @@ COPY package*.json /app/
 RUN npm install -g npm@7.20.6
 RUN npm install -g @angular/cli
 
+ENV BACKEND_API_URL http://anman-manager/
+ENV DEFAULT_LANGUAGE de
+
 # Install ionic
 RUN npm install -g ionic
 
@@ -20,3 +23,10 @@ RUN ng build --prod
 FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/www/ /usr/share/nginx/html/
+
+# replace BACKEND_API_URL, see also: https://blog.codecentric.de/en/2019/03/docker-angular-dockerize-app-easily/
+RUN echo "mainFileName=\"\$(ls /usr/share/nginx/html/main*.js)\" && \
+          envsubst '\$BACKEND_API_URL \$DEFAULT_LANGUAGE ' < \${mainFileName} > main.tmp && \
+          mv main.tmp  \${mainFileName} && nginx -g 'daemon off;'" > run.sh
+
+ENTRYPOINT ["sh", "run.sh"]
