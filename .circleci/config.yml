@@ -4,6 +4,11 @@ version: 2.1
 orbs:
   node: circleci/node@4.7
 
+dependencies:
+  pre:
+    - npm install npm@latest -g # Should fix bug in ng test
+    - npm install angular-cli@latest -g
+
 jobs:
   build-and-test:
     executor:
@@ -12,6 +17,8 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - run:
+          command: npm install -g angular-cli
       - run:
           command: ng test --watch false --single-run
 #          command: npm run test --watch false --single-run
