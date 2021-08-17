@@ -13,7 +13,8 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: npm run test --watch false
+        command: ng test --watch false --single-run
+#          command: npm run test --watch false --single-run
 
 #      - setup_remote_docker:
 #          version: 20.10.6
