@@ -2,6 +2,11 @@ FROM node:16-alpine as build
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install -g ionic
+
+#RUN npm install -g cordova ionic
+#RUN npm install -g bower
+#RUN npm install -g gulp
+
 RUN npm install
 COPY ./ /app/
 RUN npm run-script build:prod
