@@ -48,12 +48,11 @@ jobs:
  #         name: End to End Test
  #         command: npm run e2e --
 #          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
-
-#      - setup_remote_docker:
-#          version: 20.10.6
-#      - run:
-#          name: Build docker image for manager-frontend
-#          command: docker build -t jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest -f Dockerfile .
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build docker image for manager-frontend
+          command: docker build -t jukusoft/anman-manager-frontend:${CIRCLE_BRANCH}-latest -f Dockerfile .
 #      - run:
 #          name: Docker login
 #          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
