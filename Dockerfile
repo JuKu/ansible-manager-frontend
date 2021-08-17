@@ -4,6 +4,7 @@ COPY package*.json /app/
 
 # Update npm
 RUN npm install -g npm@7.20.6
+RUN npm install -g @angular/cli
 
 # Install ionic
 RUN npm install -g ionic
@@ -14,7 +15,7 @@ RUN npm install -g ionic
 
 RUN npm install
 COPY ./ /app/
-RUN npm run-script build:prod
+RUN ng build --prod
 
 FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
