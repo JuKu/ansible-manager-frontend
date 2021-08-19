@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -29,8 +30,10 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         {type: 'html'},
+        {type: 'lcovonly'},
         {type: 'text-summary'}
-      ]
+      ],
+      fixWebpackSourcePaths: true
     },
     browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
     customLaunchers: {
@@ -39,13 +42,13 @@ module.exports = function (config) {
         flags: ['--no-sandbox']
       }
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
+    /*browsers: ['Chrome'],*/
+    singleRun: true,
     restartOnFileChange: true
   });
 };
