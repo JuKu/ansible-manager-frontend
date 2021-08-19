@@ -32,4 +32,7 @@
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+
+  <!-- hide sidebar, if the user isn't logged in -->
+  <ion-router-outlet id="main-content1" *ngIf="!isLoggedIn()"></ion-router-outlet>
 </ion-app>
