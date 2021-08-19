@@ -48,11 +48,18 @@ jobs:
  #         name: End to End Test
  #         command: npm run e2e --
 #          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   deploy:
     working_directory: ~/anman
     docker:
       - image: circleci/node:16.6-browsers
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
       - setup_remote_docker:
           version: 20.10.6
       - run:
@@ -69,6 +76,11 @@ jobs:
     docker:
       - image: circleci/node:16.6-browsers
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
+      - setup_remote_docker:
+          version: 20.10.6
       - run:
           name: Create release tag
           command: docker tag jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest jukusoft/anman-frontend:${CIRCLE_TAG}
