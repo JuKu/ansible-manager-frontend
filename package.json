@@ -14,7 +14,8 @@
     "e2e:ci": "start-server-and-test start http://localhost:4200 cy:run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "build:prod": "ng build --prod"
+    "build:prod": "ng build --prod",
+    "sonar": "sonar-scanner"
   },
   "private": true,
   "dependencies": {
