@@ -48,6 +48,11 @@ jobs:
  #         name: End to End Test
  #         command: npm run e2e --
 #          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+  deploy:
+    working_directory: ~/anman
+    docker:
+      - image: circleci/node:16.6-browsers
+    steps:
       - setup_remote_docker:
           version: 20.10.6
       - run:
@@ -59,29 +64,36 @@ jobs:
       - run:
           name: Push docker image for manager-frontend
           command: docker push jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest
+  release:
+    working_directory: ~/anman
+    docker:
+      - image: circleci/node:16.6-browsers
+    steps:
       - run:
           name: Create release tag
           command: docker tag jukusoft/anman-frontend:${CIRCLE_BRANCH}-latest jukusoft/anman-frontend:${CIRCLE_TAG}
-          filters:
-            # ignore any commit on any branch by default
-            branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
       - run:
           name: Push release to Docker Hub
           command: docker push jukusoft/anman-frontend:${CIRCLE_TAG}
-          filters:
-            # ignore any commit on any branch by default
-            branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
 
 
 workflows:
   test_my_app:
     jobs:
       - build-and-test
+      - hold:
+          type: approval
+          requires:
+            - build-and-test
+      - deploy:
+          requires:
+            - hold
+      - release:
+          requires:
+            - deploy
+          filters:
+            tags:
+              only: /^.*/
+              # only: /^v[0-9]+(\.[0-9]+)*$/
+            branches:
+              ignore: /.*/
