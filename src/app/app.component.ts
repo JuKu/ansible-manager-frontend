@@ -18,4 +18,14 @@ export class AppComponent {
 
   constructor() {
   }
+
+  /**
+   * check, if the user is logged in.
+   *
+   * @return true, if the user is logged in
+   */
+  isLoggedIn(): boolean {
+    return true;
+  }
+
 }
