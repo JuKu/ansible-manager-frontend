@@ -8,11 +8,20 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
 import { environment } from '../environments/environment';
+import {SharedModule} from './shared/shared.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     {provide: 'BACKEND_API_URL', useValue: environment.backendApiUrl},
