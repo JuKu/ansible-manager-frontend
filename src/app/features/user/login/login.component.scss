@@ -1,0 +1,87 @@
+@import "src/theme/variables.scss";
+
+app-login {
+  background: #FF0000;
+}
+
+$white-color: #FFFFFF;
+$height100: 100%;
+
+ion-grid {
+  /*width:100%;*/
+  height: $height100;
+  background: #dfdfdf;
+}
+
+ion-row {
+  height: $height100;
+}
+
+ion-col {
+  border: 1px solid /*#488aff*/#783c57;
+  background: #FFFFFF;
+}
+
+ion-button {
+  $color: white;
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+
+  font-weight: 300;
+  background: $color;
+  --background: rgba($red, $green, $blue, 1);
+
+  margin-top: 50px;
+}
+
+.logo {
+  padding-bottom: 50px;
+}
+
+.ion-content {
+  /*display: flex;
+  flex-direction: column;*/
+  width: 100%;
+  background: white !important;
+  --background: white !important;
+  min-height: 800px;
+}
+
+@media (min-width: 800px) {
+  ion-grid {
+    &.center-grid {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      display: block !important;
+      /*width: 100%;*/
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  ion-grid {
+    &.center-grid {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      display: block !important;
+      /*width: 100%;*/
+    }
+  }
+
+  ion-button {
+    margin-top: 150px;
+  }
+}
+
+@media (min-width: 240px) and (max-width: 768px) {
+  ion-grid {
+    background: #FFFFFF;
+  }
+  ion-col {
+    border: none;
+  }
+}
