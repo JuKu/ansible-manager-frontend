@@ -14,3 +14,7 @@
 
 
 An angular frontend for the ansible manager: https://github.com/JuKu/ansible-manager
+
+## Dev Tools
+
+  - https://angular.io/guide/devtools
