@@ -61,7 +61,12 @@ describe('LoginComponent', () => {
     component.signinForm.setValue({username: 'user1234', password: 'password1234'});
     expect(component.signinForm.get('username').value).toBe('user1234');
 
+    const spy = spyOn(component, 'presentLoginToast');
+
     component.loginUser();
+
+    //check, if the presentLoginToast() method was called
+    expect(spy).toHaveBeenCalled();
 
     //login button should reset the form fields
     expect(component.signinForm.get('password').value).toBe('');
