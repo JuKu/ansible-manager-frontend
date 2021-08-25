@@ -45,4 +45,9 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be close its warnings', () => {
+    component.closeWarning();
+    expect(component.showWarning).toBeFalse();
+  });
 });
