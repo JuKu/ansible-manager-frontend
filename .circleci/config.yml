@@ -60,7 +60,7 @@ jobs:
 #          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
       - run:
           name: Sonarqube
-          command: npm run sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=jukusoft -Dsonar.projectKey=ansible-manager-frontend -Dsonar.buildbreaker.skip=false -Dsonar.qualitygate.wait=true -Dsonar.typescript.lcov.reportPaths=coverage/ngv/lcov.info -Dsonar.login=${SONAR_TOKEN}
+          command: npm run sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=jukusoft -Dsonar.projectKey=ansible-manager-frontend -Dsonar.buildbreaker.skip=false -Dsonar.qualitygate.wait=true -Dsonar.javascript.lcov.reportPaths=coverage/ngv/lcov.info -Dsonar.login=${SONAR_TOKEN}
       - persist_to_workspace:
           root: .
           paths:
