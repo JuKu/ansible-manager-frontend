@@ -84,6 +84,7 @@ describe('LoginComponent', () => {
   it('should not show warning before login', () => {
     component.showWarning = false;
 
+    // update the UI
     fixture.detectChanges();
 
     const element = fixture.debugElement.query(By.css('#login_warning'));
@@ -92,6 +93,7 @@ describe('LoginComponent', () => {
     //show warning
     component.showWarning = true;
 
+    // update the UI
     fixture.detectChanges();
 
     const element1 = fixture.debugElement.query(By.css('#login_warning'));
@@ -100,6 +102,7 @@ describe('LoginComponent', () => {
     //close warning
     component.closeWarning();
 
+    // update the UI
     fixture.detectChanges();
 
     const element2 = fixture.debugElement.query(By.css('#login_warning'));
