@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {IonicModule} from '@ionic/angular';
 
-import { LoginComponent } from './login.component';
+import {LoginComponent} from './login.component';
 import {CommonModule} from '@angular/common';
 import {AppModule} from '../../../app.module';
 import {By} from '@angular/platform-browser';
@@ -16,7 +16,7 @@ describe('LoginComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       imports: [
         CommonModule,
         IonicModule.forRoot(),
@@ -24,7 +24,7 @@ describe('LoginComponent', () => {
         AppModule
       ],
       providers: [
-        { provide: FormBuilder, useValue: formBuilder }
+        {provide: FormBuilder, useValue: formBuilder}
       ]
     }).compileComponents();
 
