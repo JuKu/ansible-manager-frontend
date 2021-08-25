@@ -50,4 +50,9 @@ describe('LoginComponent', () => {
     component.closeWarning();
     expect(component.showWarning).toBeFalse();
   });
+
+  it('should be able to present a toast', () => {
+    component.presentLoginToast('test');
+    expect(component.toastController).toBeTruthy();
+  });
 });
