@@ -1,6 +1,9 @@
 <form [formGroup]="signinForm" (ngSubmit)="loginUser()" class="modal-content animate">
   <ng-container class="ion-content scroll-content" style="background-color: white; ">
     <ion-grid class="center-grid" style="background-color: white; ">
+      <ion-row *ngIf="showWarning" id="login_warning">
+        <span style="color: red; ">Error! Credentials are wrong!</span>
+      </ion-row>
       <ion-row>
         <ion-col size="12" text-center class="ion-text-center" style="text-align: center; height: 100%; ">
           <div text-center>
