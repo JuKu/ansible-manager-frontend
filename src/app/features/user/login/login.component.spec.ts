@@ -58,14 +58,13 @@ describe('LoginComponent', () => {
 
   it('should login', () => {
     //first, set the username and password
-    component.signinForm.setValue({username: 'user1234'});
-    expect(component.signinForm.get('username')).toContain('user1234');
+    component.signinForm.setValue({username: 'user1234', password: 'password1234'});
+    expect(component.signinForm.get('username').value).toBe('user1234');
 
     component.loginUser();
 
     //login button should reset the form fields
-    expect(component.signinForm.get('username')).toBe('');
-    expect(component.signinForm.get('password')).toBe('');
+    expect(component.signinForm.get('password').value).toBe('');
     //TODO: add code here
   });
 });

@@ -37,6 +37,9 @@ export class LoginComponent implements OnInit {
         this.showWarning = true;
       }
     });*/
+
+    //reset password value after login process
+    this.signinForm.get('password').setValue('');
   }
 
   closeWarning(): void {
