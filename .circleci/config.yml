@@ -52,7 +52,7 @@ jobs:
       # Test the source code
       - run:
           name: Testing
-          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
+          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --karma-config karma.conf.js --code-coverage
       # End to End test
  #     - run:
  #         name: End to End Test
