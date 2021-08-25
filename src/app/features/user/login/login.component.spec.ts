@@ -64,8 +64,8 @@ describe('LoginComponent', () => {
     component.loginUser();
 
     //login button should reset the form fields
-    expect(component.signinForm.get('username')).toEqual('');
-    expect(component.signinForm.get('password')).toEqual('');
+    expect(component.signinForm.get('username')).toBe('');
+    expect(component.signinForm.get('password')).toBe('');
     //TODO: add code here
   });
 });
