@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginComponent } from './login.component';
 import {CommonModule} from '@angular/common';
 import {AppModule} from '../../../app.module';
+import {By} from "@angular/platform-browser";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -71,5 +72,12 @@ describe('LoginComponent', () => {
     //login button should reset the form fields
     expect(component.signinForm.get('password').value).toBe('');
     //TODO: add code here
+  });
+
+  it('should contain an input field for username and password', () => {
+    const fields = fixture.debugElement.queryAll(By.css('ion-input'));
+    expect(fields[0]).toBeTruthy();
+    expect(fields[1]).toBeTruthy();
+    expect(fields.length).toEqual(2);
   });
 });
