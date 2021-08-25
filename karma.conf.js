@@ -35,6 +35,11 @@ module.exports = function (config) {
       ],
       fixWebpackSourcePaths: true
     },
+    /*coverageIstanbulReporter: {
+      dir: require('path').join(__dirname, './coverage/angular-example'),
+      reports: ['html', 'lcovonly', 'text-summary'],
+      fixWebpackSourcePaths: true
+    },*/
     browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
     customLaunchers: {
       ChromeHeadlessCI: {
@@ -42,7 +47,7 @@ module.exports = function (config) {
         flags: ['--no-sandbox']
       }
     },
-    reporters: ['progress', 'kjhtml', 'coverage'],
+    reporters: ['progress', 'kjhtml', 'coverage'/*, 'coverage-istanbul'*/],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
