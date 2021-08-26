@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {RestAPIService} from './rest-api.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
+import {HttpErrorResponse} from "@angular/common/http";
 
 describe('RestAPIService', () => {
   let service: RestAPIService;
@@ -41,5 +42,26 @@ describe('RestAPIService', () => {
   it('should return resource url', () => {
     expect(service.getResourceURL('test')).toBeTruthy();
     expect(service.getResourceURL('test')).toBe('http://127.0.0.1:8080/test');
+  });
+
+  it('should handle error', () => {
+    spyOn(window, 'alert');
+
+    // throw client-side error
+    service.handleError(new ErrorEvent('test'));
+
+    expect(window.alert).toHaveBeenCalled();
+
+    spyOn(service.router, 'navigateByUrl');
+
+    // throw server error
+    service.handleError(new HttpErrorResponse({status: 401}));
+
+    // check, that the user is redirected to the login page
+    expect(service.router.navigateByUrl).toHaveBeenCalledOnceWith('/user/login');
+
+    // throw forbidden error
+    service.handleError(new HttpErrorResponse({status: 403}));
+    expect(service.router.navigateByUrl).toHaveBeenCalledWith('/errors/error403');
   });
 });

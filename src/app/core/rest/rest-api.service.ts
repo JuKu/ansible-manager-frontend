@@ -27,7 +27,7 @@ export class RestAPIService {
   private unauthorizedListener: ((error) => void)[] = [];
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              public router: Router) {
     //
   }
 
