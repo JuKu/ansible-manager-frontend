@@ -1,4 +1,4 @@
-import { AuthResult } from './auth-result';
+import {AuthResult} from './auth-result';
 
 describe('AuthResult', () => {
   it('should create an instance', () => {

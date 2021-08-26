@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {UserCredentials} from './auth/user-credentials';
 import {AuthResult} from './auth/auth-result';
 import {HttpClientModule} from '@angular/common/http';
 import {RestAPIService} from './rest/rest-api.service';
 import {RouterModule} from '@angular/router';
-
 
 
 @NgModule({
@@ -23,4 +22,5 @@ import {RouterModule} from '@angular/router';
     RestAPIService
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

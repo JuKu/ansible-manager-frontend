@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {catchError, Observable, throwError} from 'rxjs';
@@ -53,6 +53,15 @@ export class RestAPIService {
     return this.getBaseURL() + resource;
   }
 
+  /**
+   * send a GET request.
+   * See also: https://nichola.dev/generic-approach-to-consume-rest-api/
+   *
+   * @param resource http resource, e.q. "user/list"
+   * @param parameters optional parameters
+   *
+   * @return Observable http response oberservable
+   */
   public get<T>(resource: string, parameters: any = new Map()): Observable<any> {
     // TODO: build query url with parameters
 

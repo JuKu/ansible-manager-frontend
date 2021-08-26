@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {Error404Component} from './errors/error404/error404.component';
 import {Error403Component} from './errors/error403/error403.component';
 
