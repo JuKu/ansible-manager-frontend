@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {SharedModule} from './shared/shared.module';
 import {Error404Component} from './shared/errors/error404/error404.component';
+import {Error403Component} from './shared/errors/error403/error403.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./features/user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'error/error403',
+    component: Error403Component
   },
   {
     path: '**',
