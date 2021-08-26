@@ -25,7 +25,7 @@ export class AppComponent {
    * @return true, if the user is logged in
    */
   isLoggedIn(): boolean {
-    return true;
+    return false;
   }
 
 }

@@ -20,6 +20,7 @@ describe('AppComponent', () => {
   it('should create the app', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
+    spyOn(app, 'isLoggedIn').and.returnValue(true);
     expect(app).toBeTruthy();
   }));
 
@@ -37,6 +38,11 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const app = fixture.nativeElement;
+
+    // login user
+    spyOn(fixture.debugElement.componentInstance, 'isLoggedIn').and.returnValue(true);
+    fixture.detectChanges();
+
     const menuItems = app.querySelectorAll('ion-item');
     expect(menuItems.length).toEqual(6);
     expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/folder/Inbox');

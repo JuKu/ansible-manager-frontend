@@ -10,7 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { environment } from '../environments/environment';
 import {SharedModule} from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CoreModule } from './core/core/core.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
