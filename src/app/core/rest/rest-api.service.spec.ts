@@ -3,7 +3,8 @@ import {TestBed} from '@angular/core/testing';
 import {RestAPIService} from './rest-api.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {HttpErrorResponse} from '@angular/common/http';
+import {HttpErrorResponse, HttpXhrBackend} from '@angular/common/http';
+import {Type} from "@angular/core";
 
 describe('RestAPIService', () => {
   let service: RestAPIService;
@@ -14,9 +15,17 @@ describe('RestAPIService', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([])
+      ],
+      providers: [
+        //{provide: HttpXhrBackend, useClass: MockBackend}
       ]
     });
     service = TestBed.inject(RestAPIService);
+    //httpMock = service.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -63,5 +72,21 @@ describe('RestAPIService', () => {
     // throw forbidden error
     service.handleError(new HttpErrorResponse({status: 403}));
     expect(service.router.navigateByUrl).toHaveBeenCalledWith('/errors/error403');
+  });
+
+  it('should execute a GET request', () => {
+    const exampleResponse = {
+      test: 'test1',
+      test2: 'test3'
+    };
+
+    const url = 'http://127.0.0.1:8080/';
+
+    const response = service.get('test1');
+    const req = httpMock.expectOne(`${url}test1`);
+    req.flush(exampleResponse);
+
+    expect(req.request.method).toBe('GET');
+    expect(response).toEqual(exampleResponse);
   });
 });

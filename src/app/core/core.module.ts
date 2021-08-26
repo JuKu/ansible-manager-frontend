@@ -12,11 +12,11 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
-    UserCredentials,
-    AuthResult
+    /*UserCredentials,
+    AuthResult*/
   ],
   providers: [
     RestAPIService
