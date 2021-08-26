@@ -8,9 +8,11 @@ import {Component, OnInit} from '@angular/core';
 export class Error403Component implements OnInit {
 
   constructor() {
+    //
   }
 
   ngOnInit() {
+    //
   }
 
 }

@@ -88,7 +88,7 @@ export class RestAPIService {
           listener.apply(error);
         });
 
-        return throwError('not logged in');
+        return throwError(() => new Error('not logged in'));
       } else if (error.status === 403) {
         // forbidden
         this.router.navigateByUrl('/errors/error403');
@@ -98,7 +98,7 @@ export class RestAPIService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
-    return throwError(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 
 }
