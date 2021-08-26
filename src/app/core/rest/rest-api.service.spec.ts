@@ -1,10 +1,9 @@
-import {TestBed} from '@angular/core/testing';
+import {fakeAsync, TestBed} from '@angular/core/testing';
 
 import {RestAPIService} from './rest-api.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {HttpErrorResponse, HttpXhrBackend} from '@angular/common/http';
-import {Type} from "@angular/core";
+import {HttpErrorResponse} from '@angular/common/http';
 
 describe('RestAPIService', () => {
   let service: RestAPIService;
@@ -21,6 +20,7 @@ describe('RestAPIService', () => {
       ]
     });
     service = TestBed.inject(RestAPIService);
+    httpMock = TestBed.get(HttpTestingController);
     //httpMock = service.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
   });
 
@@ -74,7 +74,7 @@ describe('RestAPIService', () => {
     expect(service.router.navigateByUrl).toHaveBeenCalledWith('/errors/error403');
   });
 
-  it('should execute a GET request', () => {
+  it('should execute a GET request', fakeAsync(() => {
     const exampleResponse = {
       test: 'test1',
       test2: 'test3'
@@ -83,10 +83,15 @@ describe('RestAPIService', () => {
     const url = 'http://127.0.0.1:8080/';
 
     const response = service.get('test1');
+    response.subscribe((res: any) => {
+      expect(res).toBeTruthy();
+      expect(res.test).toBe('test1');
+      expect(res.test2).toBe('test3');
+    });
     const req = httpMock.expectOne(`${url}test1`);
     req.flush(exampleResponse);
 
     expect(req.request.method).toBe('GET');
-    expect(response).toEqual(exampleResponse);
-  });
+    //expect(response.pipe).toEqual(exampleResponse);
+  }));
 });
