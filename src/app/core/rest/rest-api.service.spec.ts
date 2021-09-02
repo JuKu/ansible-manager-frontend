@@ -126,4 +126,33 @@ describe('RestAPIService', () => {
 
     expect(req.request.method).toBe('GET');
   }));
+
+  it('should execute a POST request', fakeAsync(() => {
+    const exampleResponse = {
+      test: 'test1',
+      test2: 'test3'
+    };
+
+    const url = service.getBaseURL();
+
+    spyOn(service, 'handleError');
+
+    const response = service.post('test1', new Array());
+    response.subscribe((res: any) => {
+      expect(res).toBeTruthy();
+      expect(res.test).toBe('test1');
+      expect(res.test2).toBe('test3');
+
+      //error handle should not be executed
+      expect(service.handleError).not.toHaveBeenCalled();
+    });
+    const req = httpMock.expectOne(`${url}test1`);
+    req.flush(exampleResponse);
+
+    expect(req.request.method).toBe('POST');
+    //expect(response.pipe).toEqual(exampleResponse);
+
+    //error handle should not be executed
+    expect(service.handleError).not.toHaveBeenCalled();
+  }));
 });

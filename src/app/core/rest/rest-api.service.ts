@@ -80,6 +80,22 @@ export class RestAPIService {
       );
   }
 
+  /**
+   * send a POST request.
+   * See also: https://nichola.dev/generic-approach-to-consume-rest-api/
+   *
+   * @param resource http resource, e.q. "user/list"
+   * @param parameters optional parameters
+   *
+   * @return Observable http response oberservable
+   */
+  public post<T>(resource: string, parameters: any = new Map()): Observable<any> {
+    return this.http.post<T>(this.getResourceURL(resource), parameters, this.getHttpOptions())
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   // Error handling
   handleError(error: any) {
     let errorMessage = '';
