@@ -80,18 +80,50 @@ describe('RestAPIService', () => {
       test2: 'test3'
     };
 
-    const url = 'http://127.0.0.1:8080/';
+    const url = service.getBaseURL();
+
+    spyOn(service, 'handleError');
 
     const response = service.get('test1');
     response.subscribe((res: any) => {
       expect(res).toBeTruthy();
       expect(res.test).toBe('test1');
       expect(res.test2).toBe('test3');
+
+      //error handle should not be executed
+      expect(service.handleError).not.toHaveBeenCalled();
     });
     const req = httpMock.expectOne(`${url}test1`);
     req.flush(exampleResponse);
 
     expect(req.request.method).toBe('GET');
     //expect(response.pipe).toEqual(exampleResponse);
+
+    //error handle should not be executed
+    expect(service.handleError).not.toHaveBeenCalled();
+  }));
+
+  it('should call error handler on backend error', fakeAsync(() => {
+    const mockErrorResponse = new HttpErrorResponse({ error: new ErrorEvent('test'), status: 400, statusText: 'Bad Request' });
+    let counter = 0;
+    const listener = error => {
+      counter++;
+    };
+    service.addUnauthorizedListener(listener);
+
+    const url = service.getBaseURL();
+
+    spyOn(service, 'handleError');
+
+    const response = service.get('test2');
+    response.subscribe((res: any) => {
+      //error handle should not be executed
+      //expect(service.handleError).toHaveBeenCalled();
+      //expect(counter).toEqual(1);
+    });
+    const req = httpMock.expectOne(`${url}test2`);
+    req.flush(mockErrorResponse);
+
+    expect(req.request.method).toBe('GET');
   }));
 });

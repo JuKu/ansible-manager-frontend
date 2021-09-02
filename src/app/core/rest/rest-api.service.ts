@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {catchError, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
@@ -54,6 +54,15 @@ export class RestAPIService {
   }
 
   /**
+   * add unauthorized listener.
+   *
+   * @param listener unauthorized listener
+   */
+  public addUnauthorizedListener(listener: (error) => void): void {
+    this.unauthorizedListener.push(listener);
+  }
+
+  /**
    * send a GET request.
    * See also: https://nichola.dev/generic-approach-to-consume-rest-api/
    *
@@ -72,7 +81,7 @@ export class RestAPIService {
   }
 
   // Error handling
-  handleError(error) {
+  handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -98,6 +107,8 @@ export class RestAPIService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
+    console.error('An error occurred:', error.error);
+
     return throwError(() => new Error(errorMessage));
   }
 
