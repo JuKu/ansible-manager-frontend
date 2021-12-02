@@ -44,8 +44,8 @@ describe('RestAPIService', () => {
     expect(service.getHttpOptions().headers.get('Content-Type')).toBeTruthy();
     expect(service.getHttpOptions().headers.get('Content-Type')).toBe('application/json');
 
-    expect(service.getHttpOptions().headers.get('Access-Control-Allow-Origin')).toBeTruthy();
-    expect(service.getHttpOptions().headers.get('Access-Control-Allow-Origin')).toBe('*');
+    //expect(service.getHttpOptions().headers.get('Access-Control-Allow-Origin')).toBeTruthy();
+    //expect(service.getHttpOptions().headers.get('Access-Control-Allow-Origin')).toBe('*');
   });
 
   it('should return resource url', () => {
