@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from './core/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   /**
@@ -25,7 +26,7 @@ export class AppComponent {
    * @return true, if the user is logged in
    */
   isLoggedIn(): boolean {
-    return false;
+    return this.authService.isLoggedIn;
   }
 
 }
