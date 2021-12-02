@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Error404Component} from './errors/error404/error404.component';
 import {Error403Component} from './errors/error403/error403.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {Error403Component} from './errors/error403/error403.component';
     Error403Component
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     Error404Component,

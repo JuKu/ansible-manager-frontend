@@ -5,15 +5,21 @@ import {RouterTestingModule} from '@angular/router/testing';
 
 import {AppComponent} from './app.component';
 
+//see also: https://stackoverflow.com/questions/47236963/no-provider-for-httpclient
+// Http testing module and mocking controller
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+
+// Other imports
+
 describe('AppComponent', () => {
-
-
   beforeEach(waitForAsync(() => {
-
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterTestingModule.withRoutes([])],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([])
+      ],
     }).compileComponents();
   }));
 

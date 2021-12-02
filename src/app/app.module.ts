@@ -12,6 +12,10 @@ import {SharedModule} from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CoreModule } from './core/core.module';
 
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './core/auth/auth.interceptor';
+import { RouterModule, Routes } from '@angular/router';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,10 +26,17 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     CoreModule
   ],
   providers: [
+    HttpClientModule,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     {provide: 'BACKEND_API_URL', useValue: environment.backendApiUrl},
     {provide: 'DEFAULT_LANGUAGE', useValue: environment.defaultLanguage}
   ],

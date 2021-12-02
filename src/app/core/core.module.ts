@@ -19,6 +19,7 @@ import {RouterModule} from '@angular/router';
     AuthResult*/
   ],
   providers: [
+    HttpClientModule,
     RestAPIService
   ]
 })
