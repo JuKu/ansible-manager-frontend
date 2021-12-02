@@ -5,9 +5,6 @@ import {ToastController} from '@ionic/angular';
 import {AuthService} from '../../../core/auth/auth.service';
 import {AuthResult} from '../../../core/auth/auth-result';
 
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
