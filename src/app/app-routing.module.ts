@@ -3,6 +3,8 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {SharedModule} from './shared/shared.module';
 import {Error404Component} from './shared/errors/error404/error404.component';
 import {Error403Component} from './shared/errors/error403/error403.component';
+import {AuthGuard} from './core/auth/auth.guard';
+import {LoginComponent} from "./features/user/login/login.component";
 
 const routes: Routes = [
   {
@@ -12,11 +14,17 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',
-    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'error/error403',
