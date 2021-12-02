@@ -89,7 +89,7 @@ export class RestAPIService {
    *
    * @return Observable http response oberservable
    */
-  public post<T>(resource: string, parameters: any = new Map()): Observable<any> {
+  public post<T>(resource: string, parameters: any = new Map()): Observable<T> {
     return this.http.post<T>(this.getResourceURL(resource), parameters, this.getHttpOptions())
       .pipe(
         catchError(this.handleError)

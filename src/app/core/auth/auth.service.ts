@@ -28,9 +28,11 @@ export class AuthService {
       const authResult = new AuthResult();
 
       // tslint:disable-next-line:max-line-length
-      this.restApiService.post<any>('login', credentials)
+      this.restApiService.post<any>('api/login', credentials)
         .pipe(
           catchError((err, caught) => {
+            console.warn('catchError: ' + err);
+
             authResult.success = false;
             observer.next(authResult);
             observer.complete();

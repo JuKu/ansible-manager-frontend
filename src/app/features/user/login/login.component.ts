@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
+import {AuthService} from "../../../core/auth/auth.service";
+import {AuthResult} from "../../../core/auth/auth-result";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   showWarning = false;
 
   constructor(public fb: FormBuilder,
-              /*public authService: AuthService,*/
+              public authService: AuthService,
               public toastController: ToastController,
               public router: Router) {
     this.signinForm = this.fb.group({
@@ -30,13 +32,13 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.presentLoginToast('try to login...');
-    /*this.authService.login(this.signinForm.value).subscribe((res: AuthResult) => {
+    this.authService.login(this.signinForm.value).subscribe((res: AuthResult) => {
       if (res.success) {
         this.router.navigate(['']);
       } else {
         this.showWarning = true;
       }
-    });*/
+    });
 
     //reset password value after login process
     this.signinForm.get('password').setValue('');
