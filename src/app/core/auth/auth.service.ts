@@ -23,6 +23,10 @@ export class AuthService {
   }
 
   public login(credentials: UserCredentials): Observable<AuthResult> {
+    if (typeof credentials.username=='undefined' || !credentials.username) {
+      throw new Error('username is empty');
+    }
+
     console.log('try to login ' + credentials.username);
     this.res = new Observable<AuthResult>((observer) => {
       const authResult = new AuthResult();

@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {AuthService} from "../../../core/auth/auth.service";
-import {AuthResult} from "../../../core/auth/auth-result";
+import {AuthService} from '../../../core/auth/auth.service';
+import {AuthResult} from '../../../core/auth/auth-result';
+
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +24,8 @@ export class LoginComponent implements OnInit {
               public toastController: ToastController,
               public router: Router) {
     this.signinForm = this.fb.group({
-      username: [''],
-      password: ['']
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
@@ -31,6 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+    console.log('username: ' + this.signinForm.get('username').value);
+
     this.presentLoginToast('try to login...');
     this.authService.login(this.signinForm.value).subscribe((res: AuthResult) => {
       if (res.success) {

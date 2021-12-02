@@ -8,12 +8,15 @@ import {UserRoutingModule} from './user-routing.module';
 import {LoginComponent} from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    BrowserModule,
     ReactiveFormsModule,
     UserRoutingModule,
     HttpClientModule

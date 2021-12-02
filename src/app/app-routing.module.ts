@@ -4,7 +4,7 @@ import {SharedModule} from './shared/shared.module';
 import {Error404Component} from './shared/errors/error404/error404.component';
 import {Error403Component} from './shared/errors/error403/error403.component';
 import {AuthGuard} from './core/auth/auth.guard';
-import {LoginComponent} from "./features/user/login/login.component";
+import {LoginComponent} from './features/user/login/login.component';
 
 const routes: Routes = [
   {

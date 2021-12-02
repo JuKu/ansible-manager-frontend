@@ -17,7 +17,7 @@ export class RestAPIService {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'Access-Control-Allow-Origin': '*'
+      //'Access-Control-Allow-Origin': '*'
     })
   };
 
