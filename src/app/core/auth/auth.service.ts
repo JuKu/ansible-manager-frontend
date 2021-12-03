@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {catchError, retry} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {AuthResult} from './auth-result';
 import {UserCredentials} from './user-credentials';
@@ -40,7 +40,7 @@ export class AuthService {
             authResult.success = false;
             observer.next(authResult);
             observer.complete();
-            return throwError('login failed');
+            return throwError(() => new Error('login failed'));
           })
         )
         .subscribe((data: any) => {
@@ -87,7 +87,7 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const authToken = this.getToken(); // localStorage.getItem('access_token');
+    const authToken = this.getToken();
     return (authToken !== null) ? true : false;
   }
 
@@ -114,7 +114,7 @@ export class AuthService {
         window.alert(errorMessage);
       }
     }
-    return throwError(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 
   handleUnauthorizedError(error) {

@@ -7,14 +7,13 @@ import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import {SharedModule} from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CoreModule } from './core/core.module';
+import {CoreModule} from './core/core.module';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './core/auth/auth.interceptor';
-import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
