@@ -12,16 +12,16 @@
           </div>
           <div padding>
             <ion-item>
-              <ion-input type="text" name="username" formControlName="username" placeholder="Username" required></ion-input>
+              <ion-input type="text" formControlName="username" placeholder="Username" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="password" name="password" formControlName="password" placeholder="Password" (keyup.enter)="loginUser()" required></ion-input>
+              <ion-input type="password" formControlName="password" placeholder="Password" (keyup.enter)="loginUser()" required></ion-input>
             </ion-item>
           </div>
 
           <div padding><!-- removed:  type="submit" -->
-            <ion-button size="large" (mouseup)="loginUser()" expand="block" color="light">Login</ion-button>
+            <ion-button size="large" type="submit" (mouseup)="loginUser()" expand="block" color="light">Login</ion-button>
           </div>
         </ion-col>
       </ion-row>

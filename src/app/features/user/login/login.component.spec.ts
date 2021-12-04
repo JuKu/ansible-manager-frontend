@@ -47,15 +47,15 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /*it('should be close its warnings', () => {
+  it('should be close its warnings', () => {
     component.closeWarning();
     expect(component.showWarning).toBeFalse();
-  });*/
+  });
 
-  /*it('should be able to present a toast', () => {
+  it('should be able to present a toast', () => {
     component.presentLoginToast('test');
     expect(component.toastController).toBeTruthy();
-  });*/
+  });
 
   it('should login', () => {
     //first, set the username and password
