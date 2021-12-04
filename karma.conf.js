@@ -53,6 +53,10 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     /*browsers: ['Chrome'],*/
+    exclude: [
+      '**/rest-api.service.ts',
+      '**/auth.service.ts'
+    ],
     singleRun: true,
     restartOnFileChange: true
   });
