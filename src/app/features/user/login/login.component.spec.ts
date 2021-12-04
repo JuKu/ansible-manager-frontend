@@ -3,11 +3,9 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 
 import {LoginComponent} from './login.component';
-import {CommonModule} from '@angular/common';
-import {AppModule} from '../../../app.module';
 import {By} from '@angular/platform-browser';
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -25,8 +23,7 @@ describe('LoginComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule.forRoot([])/*,
-        AppModule*/
+        RouterModule.forRoot([])
       ],
       providers: [
         {provide: FormBuilder, useValue: formBuilder}
