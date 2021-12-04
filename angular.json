@@ -101,6 +101,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "codeCoverageExclude": ["**/rest-api.service.ts", "**/auth.service.ts"],
             "styles": [],
             "scripts": [],
             "assets": [
