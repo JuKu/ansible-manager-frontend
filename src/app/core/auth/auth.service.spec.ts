@@ -54,4 +54,21 @@ describe('AuthService', () => {
       expect(res).toBeTruthy();
     });
   });
+
+  describe('logout()', () => {
+    it('should remove the access token', () => {
+      localStorage.setItem(service.getAccessTokenName(), 'test-token');
+      expect(localStorage.getItem(service.getAccessTokenName())).toBe('test-token');
+
+      //add empty logout listener for test
+      service.addLogoutListener(() => {});
+
+      //logout, which should remove the access token
+      service.logout();
+
+      expect(localStorage.getItem(service.getAccessTokenName())).toBeNull();
+      expect(sessionStorage.getItem(service.getAccessTokenName())).toBeNull();
+      expect(service.getToken()).toBeNull();
+    });
+  });
 });

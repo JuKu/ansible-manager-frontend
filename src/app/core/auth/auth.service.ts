@@ -74,6 +74,10 @@ export class AuthService {
     });
   }
 
+  public getAccessTokenName(): string {
+    return this.accessTokenName;
+  }
+
   public getToken() {
     let token: string;
 
