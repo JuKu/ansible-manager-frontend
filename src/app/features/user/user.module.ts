@@ -13,10 +13,10 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
     UserRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicModule
   ],
   exports: [
     LoginComponent
