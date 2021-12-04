@@ -60,7 +60,8 @@ describe('AuthService', () => {
       localStorage.setItem(service.getAccessTokenName(), 'test-token');
       expect(localStorage.getItem(service.getAccessTokenName())).toBe('test-token');
 
-      //add empty logout listener for test
+      //add empty login and logout listener for test
+      service.addLoginListener(() => {});
       service.addLogoutListener(() => {});
 
       //logout, which should remove the access token
@@ -96,6 +97,17 @@ describe('AuthService', () => {
       //set token
       sessionStorage.setItem(service.getAccessTokenName(), 'test-token');
       expect(service.isLoggedIn).toBeTrue();
+    });
+  });
+
+  describe('handleUnauthorizedError()', () => {
+    it('should logout the user', () => {
+      //login the user first
+      sessionStorage.setItem(service.getAccessTokenName(), 'test-token');
+      expect(service.isLoggedIn).toBeTrue();
+
+      service.handleUnauthorizedError({});
+      expect(service.isLoggedIn).toBeFalse();
     });
   });
 });
