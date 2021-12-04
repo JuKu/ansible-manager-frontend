@@ -7,6 +7,7 @@ import {BrowserModule, By} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
+import {AuthService} from '../../../core/auth/auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,6 +15,10 @@ describe('LoginComponent', () => {
 
   // create new instance of FormBuilder
   const formBuilder: FormBuilder = new FormBuilder();
+
+  const restSpy = jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener']);
+  const authService: AuthService = new AuthService(restSpy);
+  authService.setMockRequest(true);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -28,7 +33,8 @@ describe('LoginComponent', () => {
         BrowserModule
       ],
       providers: [
-        {provide: FormBuilder, useValue: formBuilder}
+        {provide: FormBuilder, useValue: formBuilder},
+        {provide: AuthService, useValue: authService}
       ]
     }).compileComponents();
 

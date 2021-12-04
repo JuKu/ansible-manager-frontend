@@ -15,6 +15,7 @@ export class AuthService {
   private logoutListener: (() => void)[] = [];
 
   private accessTokenName = 'anman_access_token';
+  private mockRequest = false;
 
   // see also: https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
@@ -30,6 +31,11 @@ export class AuthService {
     console.log('try to login ' + credentials.username);
     this.res = new Observable<AuthResult>((observer) => {
       const authResult = new AuthResult();
+
+      if (this.mockRequest) {
+        sessionStorage.setItem(this.accessTokenName, 'test-token');
+        return;
+      }
 
       // tslint:disable-next-line:max-line-length
       this.restApiService.post<any>('api/login', credentials)
@@ -124,6 +130,10 @@ export class AuthService {
   handleUnauthorizedError(error) {
     /* set user as logged off */
     this.logout();
+  }
+
+  public setMockRequest(flag: true) {
+    this.mockRequest = flag;
   }
 
 }
