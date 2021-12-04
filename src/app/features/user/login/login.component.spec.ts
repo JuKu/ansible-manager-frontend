@@ -3,9 +3,10 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 
 import {LoginComponent} from './login.component';
-import {By} from '@angular/platform-browser';
+import {BrowserModule, By} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import {CommonModule} from "@angular/common";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -18,12 +19,13 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [
-        //CommonModule,
+        CommonModule,
         IonicModule.forRoot(),
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        BrowserModule
       ],
       providers: [
         {provide: FormBuilder, useValue: formBuilder}
