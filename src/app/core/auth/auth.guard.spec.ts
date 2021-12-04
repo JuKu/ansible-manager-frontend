@@ -90,6 +90,16 @@ describe('AuthGuard', () => {
         expect(isAccessGranted).toBeFalse();
       });
 
+      it('rejects child route access', () => {
+        const canActivateChild = guard.canActivateChild(dummyRoute, fakeRouterState(fakeUrl));
+        expect(canActivateChild).toBeFalse();
+      });
+
+      it('rejects load access', () => {
+        const canLoad = guard.canLoad(null, null);
+        expect(canLoad).toBeFalse();
+      });
+
       it('navigates to the login page', () => {
         guard.canActivate(null, null);
         expect(routerSpy.navigate).toHaveBeenCalledWith(['login']);
