@@ -19,6 +19,7 @@ describe('AuthService', () => {
   let httpTestingController: HttpTestingController;
 
   let service: AuthService;
+  const restSpy = jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +28,7 @@ describe('AuthService', () => {
         RouterTestingModule],
       providers: [{
         provide: RestAPIService,
-        useValue: jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener'])
+        useValue: restSpy
       }],
     });
 
@@ -49,7 +50,6 @@ describe('AuthService', () => {
     });
 
     it('should return an AuthResult', () => {
-      //const serviceMock = jasmine.createSpy('RestAPIService', 'post');
       const res: Observable<AuthResult> = service.login(new UserCredentials('test', 'test1'));
       expect(res).toBeTruthy();
     });
