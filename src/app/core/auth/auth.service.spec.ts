@@ -9,6 +9,10 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 // Other imports
 import {HttpClient} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
+import {UserCredentials} from './user-credentials';
+import {Observable} from 'rxjs';
+import {AuthResult} from './auth-result';
+import {RestAPIService} from '../rest/rest-api.service';
 
 describe('AuthService', () => {
   let httpClient: HttpClient;
@@ -20,7 +24,11 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule]
+        RouterTestingModule],
+      providers: [{
+        provide: RestAPIService,
+        useValue: jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener'])
+      }],
     });
 
     // Inject the http service and test controller for each test
@@ -32,5 +40,18 @@ describe('AuthService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  describe('login()', () => {
+    it('should throw an error on empty username', () => {
+      const userCredentials: UserCredentials = new UserCredentials('', '');
+      expect(() => service.login(userCredentials)).toThrowError(Error);
+    });
+
+    it('should return an AuthResult', () => {
+      //const serviceMock = jasmine.createSpy('RestAPIService', 'post');
+      const res: Observable<AuthResult> = service.login(new UserCredentials('test', 'test1'));
+      expect(res).toBeTruthy();
+    });
   });
 });
