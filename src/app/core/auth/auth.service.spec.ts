@@ -85,4 +85,17 @@ describe('AuthService', () => {
       expect(service.getToken()).toBe('test-token2');
     });
   });
+
+  describe('isLoggedIn()', () => {
+    it('should return false, if no token exists', () => {
+      localStorage.removeItem(service.getAccessTokenName());
+      sessionStorage.removeItem(service.getAccessTokenName());
+
+      expect(service.isLoggedIn).toBeFalse();
+
+      //set token
+      sessionStorage.setItem(service.getAccessTokenName(), 'test-token');
+      expect(service.isLoggedIn).toBeTrue();
+    });
+  });
 });
