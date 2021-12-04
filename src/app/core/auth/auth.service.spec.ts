@@ -49,7 +49,7 @@ describe('AuthService', () => {
       expect(() => service.login(userCredentials)).toThrowError(Error);
     });
 
-    it('should return an AuthResult', () => {
+    it('should return an AuthResult Oberservable', () => {
       const res: Observable<AuthResult> = service.login(new UserCredentials('test', 'test1'));
       expect(res).toBeTruthy();
     });
