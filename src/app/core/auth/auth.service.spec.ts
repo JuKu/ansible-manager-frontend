@@ -71,4 +71,18 @@ describe('AuthService', () => {
       expect(service.getToken()).toBeNull();
     });
   });
+
+  describe('getToken()', () => {
+    it('should return local storage token preferred', () => {
+      localStorage.setItem(service.getAccessTokenName(), 'test-token1');
+      sessionStorage.setItem(service.getAccessTokenName(), 'test-token2');
+
+      expect(service.getToken()).toBe('test-token1');
+
+      //remove local token
+      localStorage.removeItem(service.getAccessTokenName());
+
+      expect(service.getToken()).toBe('test-token2');
+    });
+  });
 });
