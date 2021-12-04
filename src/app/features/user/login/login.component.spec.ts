@@ -18,7 +18,7 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [
-        CommonModule,
+        //CommonModule,
         IonicModule.forRoot(),
         ReactiveFormsModule,
         AppModule
