@@ -14,7 +14,7 @@ export class AuthService {
   private loginListener: (() => void)[] = [];
   private logoutListener: (() => void)[] = [];
 
-  private accessTokenName = 'tst_access_token';
+  private accessTokenName = 'anman_access_token';
 
   // see also: https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
