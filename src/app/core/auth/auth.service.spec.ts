@@ -110,4 +110,10 @@ describe('AuthService', () => {
       expect(service.isLoggedIn).toBeFalse();
     });
   });
+
+  describe('getPermissionService()', () => {
+    it('should return not null', () => {
+      expect(service.getPermissionService()).not.toBeNull();
+    });
+  });
 });

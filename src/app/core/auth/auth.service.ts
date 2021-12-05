@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {AuthResult} from './auth-result';
 import {UserCredentials} from './user-credentials';
 import {RestAPIService} from '../rest/rest-api.service';
+import {PermissionService} from './permission.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService {
 
   // see also: https://www.positronx.io/angular-jwt-user-authentication-tutorial/
 
-  constructor(private restApiService: RestAPIService) {
+  constructor(private restApiService: RestAPIService,
+              private permissionService: PermissionService) {
     restApiService.addUnauthorizedListener(this.handleUnauthorizedError);
   }
 
@@ -78,6 +80,9 @@ export class AuthService {
     this.logoutListener.forEach((listener: () => void) => {
       listener.apply(null);
     });
+
+    //remove all permissions of the user
+    this.permissionService.cleanUp();
   }
 
   public getAccessTokenName(): string {
@@ -134,6 +139,10 @@ export class AuthService {
 
   public setMockRequest(flag: true) {
     this.mockRequest = flag;
+  }
+
+  public getPermissionService(): PermissionService {
+    return this.permissionService;
   }
 
 }

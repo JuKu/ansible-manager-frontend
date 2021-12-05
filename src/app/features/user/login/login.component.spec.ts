@@ -17,7 +17,7 @@ describe('LoginComponent', () => {
   const formBuilder: FormBuilder = new FormBuilder();
 
   const restSpy = jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener']);
-  const authService: AuthService = new AuthService(restSpy);
+  const authService: AuthService = new AuthService(restSpy, jasmine.createSpyObj('PermissionService', ['loadPermissions', 'cleanUp']));
   authService.setMockRequest(true);
 
   beforeEach(waitForAsync(() => {
