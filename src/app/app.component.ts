@@ -30,7 +30,7 @@ export class AppComponent {
   private constructedPages = [];
 
   constructor(private authService: AuthService) {
-    this.constructPages();
+    this.constructPages(this.appPages);
   }
 
   /**
@@ -66,10 +66,10 @@ export class AppComponent {
   /**
    * computes the correct pages list.
    */
-  private constructPages() {
+  public constructPages(pages: Array<any>) {
     this.constructedPages = [];
 
-    this.appPages.forEach((page) => {
+    pages.forEach((page) => {
       //check permissions
       if (this.hasPagePermission(page)) {
         this.constructedPages.push(page);

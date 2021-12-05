@@ -9,17 +9,27 @@ import {AppComponent} from './app.component';
 // Http testing module and mocking controller
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {By} from '@angular/platform-browser';
+import {FormBuilder} from '@angular/forms';
+import {AuthService} from './core/auth/auth.service';
 
 // Other imports
 
 describe('AppComponent', () => {
+  const restSpy = jasmine.createSpyObj('RestAPIService', ['post', 'addUnauthorizedListener']);
+  const authService: AuthService = new AuthService(restSpy, jasmine.createSpyObj('PermissionService',
+    ['loadPermissions', 'cleanUp', 'hasPermission']));
+  authService.setMockRequest(true);
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule.withRoutes([])
+        RouterTestingModule.withRoutes([]),
+      ],
+      providers: [
+        {provide: AuthService, useValue: authService}
       ],
     }).compileComponents();
   }));
@@ -98,6 +108,26 @@ describe('AppComponent', () => {
     menuEntries.forEach((menuEntry: DebugElement) => {
       expect(menuEntry).toBeTruthy();
     });
+  }));
+
+  it('should hide menu entries without permission', fakeAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const app = fixture.componentInstance;
+
+    //construct page with required permission
+    app.constructPages([
+      {title: 'Logout', url: '/logout', icon: 'log-out', permissions: ['test'], show: false, subPages: []}
+    ]);
+
+    fixture.detectChanges();
+    tick(20);
+
+    const compiled = fixture.debugElement.nativeElement;
+    const menuEntries = fixture.debugElement.queryAll(By.css('ion-item'));
+
+    //all menu entries should be hidden
+    expect(menuEntries.length).toBe(0);
   }));
 
 });
