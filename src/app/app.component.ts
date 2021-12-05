@@ -12,9 +12,9 @@ export class AppComponent {
     {
       title: 'Execution', url: '/execution/overview', icon: 'chevron-forward-circle', permissions: [], show: false,
       subPages: [
-        {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
-        {title: 'Jobs', url: '/folder/Outbox', icon: 'server', permissions: []},
-        {title: 'Scheduler', url: '/folder/Outbox', icon: 'server', permissions: []},
+        {title: 'Dashboard', url: '/folder/Outbox1', icon: 'server', permissions: []},
+        {title: 'Jobs', url: '/folder/Outbox2', icon: 'server', permissions: []},
+        {title: 'Scheduler', url: '/folder/Outbox3', icon: 'server', permissions: []},
       ]
     },
     {title: 'Server', url: '/folder/Outbox', icon: 'server', permissions: [], show: false},
@@ -40,6 +40,17 @@ export class AppComponent {
    */
   public isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
+  }
+
+  /**
+   * This method is used by the menu to set the correct right icon.
+   */
+  public getDropdownMenuIconName(page: any) {
+    return page.show ? 'chevron-down-circle' : 'chevron-forward-circle';
+  }
+
+  public hasSubPages(page: any) {
+    return page.hasOwnProperty('subPages') && page.subPages.length > 0;
   }
 
   /**
