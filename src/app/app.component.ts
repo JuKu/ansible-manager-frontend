@@ -8,21 +8,22 @@ import {AuthService} from './core/auth/auth.service';
 })
 export class AppComponent {
   public appPages = [
-    {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
+    {title: 'Dashboard', url: '/dashboard/overview', icon: 'server', permissions: [], show: false},
     {
-      title: 'Execution', url: '/folder/Inbox', icon: 'chevron-forward-circle', permissions: [], subPages: [
+      title: 'Execution', url: '/execution/overview', icon: 'chevron-forward-circle', permissions: [], show: false,
+      subPages: [
         {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
         {title: 'Jobs', url: '/folder/Outbox', icon: 'server', permissions: []},
         {title: 'Scheduler', url: '/folder/Outbox', icon: 'server', permissions: []},
       ]
     },
-    {title: 'Server', url: '/folder/Outbox', icon: 'server', permissions: []},
-    {title: 'Templates', url: '/folder/Favorites', icon: 'book', permissions: []},
-    {title: 'Projects', url: '/folder/Archived', icon: 'newspaper', permissions: []},
-    {title: 'Teams', url: '/folder/Archived', icon: 'people', permissions: []},
-    {title: 'Repositories', url: '/folder/Trash', icon: 'code-slash', permissions: []},
-    {title: 'Administration', url: '/admin/home', icon: 'construct', permissions: []},
-    {title: 'Logout', url: '/logout', icon: 'log-out', permissions: []},
+    {title: 'Server', url: '/folder/Outbox', icon: 'server', permissions: [], show: false},
+    {title: 'Templates', url: '/folder/Favorites', icon: 'book', permissions: [], show: false},
+    {title: 'Projects', url: '/folder/Archived', icon: 'newspaper', permissions: [], show: false},
+    {title: 'Teams', url: '/folder/Archived1', icon: 'people', permissions: [], show: false},
+    {title: 'Repositories', url: '/folder/Trash', icon: 'code-slash', permissions: [], show: false},
+    {title: 'Administration', url: '/admin/home', icon: 'construct', permissions: [], show: false},
+    {title: 'Logout', url: '/logout', icon: 'log-out', permissions: [], show: false},
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
