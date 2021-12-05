@@ -24,6 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule),
     component: LoginComponent
   },
   {
