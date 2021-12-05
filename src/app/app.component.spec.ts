@@ -96,10 +96,11 @@ describe('AppComponent', () => {
     const menus = compiled.querySelectorAll('ion-item');
     //console.log(menus);
     //menus[1].click();
-    tick(20);
+    tick(100);
     fixture.detectChanges();
 
     //there should be only one selected element
+    expect(fixture.debugElement).toBeTruthy();
     expect(fixture.debugElement.queryAll(By.css('.selected')).length).toBe(1);
 
     //verify, that all other menus are not selected
