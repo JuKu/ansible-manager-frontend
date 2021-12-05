@@ -58,6 +58,9 @@ export class AuthService {
 
           authResult.success = true;
 
+          //load permissions for user
+          this.permissionService.loadPermissions();
+
           observer.next(authResult);
           observer.complete();
 

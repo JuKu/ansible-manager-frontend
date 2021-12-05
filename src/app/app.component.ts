@@ -8,17 +8,21 @@ import {AuthService} from './core/auth/auth.service';
 })
 export class AppComponent {
   public appPages = [
+    {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
     {title: 'Execution', url: '/folder/Inbox', icon: 'chevron-forward-circle', permissions: [], subPages: [
-      //
+        {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
+        {title: 'Jobs', url: '/folder/Outbox', icon: 'server', permissions: []},
+        {title: 'Scheduler', url: '/folder/Outbox', icon: 'server', permissions: []},
       ]},
-    {title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane', permissions: []},
-    {title: 'Favorites', url: '/folder/Favorites', icon: 'heart', permissions: []},
-    {title: 'Archived', url: '/folder/Archived', icon: 'archive', permissions: []},
-    {title: 'Trash', url: '/folder/Trash', icon: 'trash', permissions: []},
+    {title: 'Server', url: '/folder/Outbox', icon: 'server', permissions: []},
+    {title: 'Templates', url: '/folder/Favorites', icon: 'book', permissions: []},
+    {title: 'Projects', url: '/folder/Archived', icon: 'newspaper', permissions: []},
+    {title: 'Teams', url: '/folder/Archived', icon: 'people', permissions: []},
+    {title: 'Repositories', url: '/folder/Trash', icon: 'code-slash', permissions: []},
     {title: 'Administration', url: '/admin/home', icon: 'construct', permissions: []},
     {title: 'Logout', url: '/logout', icon: 'log-out', permissions: []},
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   private constructedPages = [];
 
