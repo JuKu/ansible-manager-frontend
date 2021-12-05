@@ -30,7 +30,7 @@ export class PermissionService {
   }
 
   public hasPermission(requestedPermission: string): boolean {
-    return this.permissions.indexOf(requestedPermission) > 0;
+    return this.permissions.indexOf(requestedPermission) >= 0;
   }
 
   /**
