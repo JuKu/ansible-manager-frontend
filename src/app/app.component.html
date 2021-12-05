@@ -12,22 +12,15 @@
           <ion-note>hi@ionicframework.com</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of constructedPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-                      routerLinkActive="selected" (mouseup)="showSubMenu(p)">
+            <ion-item routerDirection="root" [routerLink]="hasSubPages(p) ? [] : [p.url]" lines="none" detail="false"
+                      [routerLinkActive]="hasSubPages(p) ? (p.show ? 'selected' : '') : 'selected'" [ngClass]="{'selected': p.show === true}" (mouseup)="toggleSubMenu(p)">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
               <ion-icon slot="end" [ios]="getDropdownMenuIconName(p) + '-outline'" [md]="getDropdownMenuIconName(p) + '-sharp'" *ngIf="hasSubPages(p)"></ion-icon>
             </ion-item>
             <ion-menu-toggle auto-hide="false" *ngFor="let sp of p.subPages; let i = index">
-              <!-- <ion-list lines="none">
-                <ion-item menuclose [hidden]="false" [routerLink]="['/notifications']"
-                          [queryParams]="{ type: 'birthday' }" menuClose class="sub-menu">
-                  <ion-icon name="calendar" slot="start"></ion-icon>
-                  Birthdays
-                </ion-item>
-              </ion-list> -->
               <ng-container *ngIf="p.show">
-                <ion-item routerDirection="root" [routerLink]="[sp.url]" lines="none" detail="false"
+                <ion-item  style="padding-left: 30px; --background: rgba(var(--ion-color-primary-rgb), 0.14)" routerDirection="root" [routerLink]="[sp.url]" lines="none" detail="false"
                           routerLinkActive="selected">
                   <ion-icon slot="start" [ios]="sp.icon + '-outline'" [md]="sp.icon + '-sharp'"></ion-icon>
                   <ion-label>{{ sp.title }}</ion-label>
