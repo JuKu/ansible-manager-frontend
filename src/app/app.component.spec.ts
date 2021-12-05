@@ -85,6 +85,7 @@ describe('AppComponent', () => {
 
     //show the first menu
     app.toggleSubMenu(app.appPages[0]);
+    fixture.detectChanges();
     tick(100);
     fixture.detectChanges();
 
@@ -94,7 +95,7 @@ describe('AppComponent', () => {
     //click the second menu entry
     const menus = compiled.querySelectorAll('ion-item');
     //console.log(menus);
-    menus[1].click();
+    //menus[1].click();
     tick(20);
     fixture.detectChanges();
 
