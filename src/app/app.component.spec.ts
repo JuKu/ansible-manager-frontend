@@ -75,7 +75,7 @@ describe('AppComponent', () => {
 
     //show the first menu
     app.toggleSubMenu(app.appPages[0]);
-    tick();
+    tick(100);
     fixture.detectChanges();
 
     //there should be only one selected element
@@ -85,7 +85,7 @@ describe('AppComponent', () => {
     const menus = compiled.querySelectorAll('ion-item');
     //console.log(menus);
     menus[1].click();
-    tick();
+    tick(20);
     fixture.detectChanges();
 
     //there should be only one selected element
@@ -97,10 +97,6 @@ describe('AppComponent', () => {
 
     menuEntries.forEach((menuEntry: DebugElement) => {
       expect(menuEntry).toBeTruthy();
-      console.log(menuEntry.classes);
-      //expect(menuEntry.classes.hasOwnProperty('selected')).toBeTrue();
-
-      //menuEntry.nativeElement
     });
   }));
 
