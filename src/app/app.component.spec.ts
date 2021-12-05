@@ -89,7 +89,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
 
     //there should be only one selected element
-    expect(fixture.debugElement.queryAll(By.css('.selected')).length).toBe(1);
+    //expect(fixture.debugElement.queryAll(By.css('.selected')).length).toBe(1);
 
     //click the second menu entry
     const menus = compiled.querySelectorAll('ion-item');
