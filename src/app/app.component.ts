@@ -53,6 +53,16 @@ export class AppComponent {
     return page.hasOwnProperty('subPages') && page.subPages.length > 0;
   }
 
+  public showSubMenu(page: any) {
+    //first, close all other submenus
+    this.constructedPages.forEach(p => p.show = false);
+
+    //choose the correct submenu and show
+    this.constructedPages
+      .filter(p => p.title === page.title && p.url === page.url)
+      .forEach(p => p.show = true);
+  }
+
   /**
    * computes the correct pages list.
    */
