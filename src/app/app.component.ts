@@ -8,7 +8,7 @@ import {AuthService} from './core/auth/auth.service';
 })
 export class AppComponent {
   public appPages = [
-    {title: 'Dashboard', url: '/dashboard/overview', icon: 'server', permissions: [], show: false},
+    {title: 'Dashboard', url: '/dashboard/overview', icon: 'analytics', permissions: [], show: false},
     {
       title: 'Execution', url: '/execution/overview', icon: 'chevron-forward-circle', permissions: [], show: false,
       subPages: [
@@ -46,7 +46,7 @@ export class AppComponent {
    * This method is used by the menu to set the correct right icon.
    */
   public getDropdownMenuIconName(page: any) {
-    return page.show ? 'chevron-down-circle' : 'chevron-forward-circle';
+    return page.show ? 'chevron-down-circle' : '';
   }
 
   public hasSubPages(page: any) {
