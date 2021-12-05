@@ -9,11 +9,13 @@ import {AuthService} from './core/auth/auth.service';
 export class AppComponent {
   public appPages = [
     {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
-    {title: 'Execution', url: '/folder/Inbox', icon: 'chevron-forward-circle', permissions: [], subPages: [
+    {
+      title: 'Execution', url: '/folder/Inbox', icon: 'chevron-forward-circle', permissions: [], subPages: [
         {title: 'Dashboard', url: '/folder/Outbox', icon: 'server', permissions: []},
         {title: 'Jobs', url: '/folder/Outbox', icon: 'server', permissions: []},
         {title: 'Scheduler', url: '/folder/Outbox', icon: 'server', permissions: []},
-      ]},
+      ]
+    },
     {title: 'Server', url: '/folder/Outbox', icon: 'server', permissions: []},
     {title: 'Templates', url: '/folder/Favorites', icon: 'book', permissions: []},
     {title: 'Projects', url: '/folder/Archived', icon: 'newspaper', permissions: []},
@@ -28,6 +30,15 @@ export class AppComponent {
 
   constructor(private authService: AuthService) {
     this.constructPages();
+  }
+
+  /**
+   * check, if the user is logged in.
+   *
+   * @return true, if the user is logged in
+   */
+  public isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
   }
 
   /**
@@ -66,16 +77,6 @@ export class AppComponent {
 
       return false;
     }
-  }
-
-
-  /**
-   * check, if the user is logged in.
-   *
-   * @return true, if the user is logged in
-   */
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
   }
 
 }
