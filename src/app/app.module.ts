@@ -16,30 +16,29 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './core/auth/auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CoreModule
-  ],
-  providers: [
-    HttpClientModule,
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    {provide: 'BACKEND_API_URL', useValue: environment.backendApiUrl},
-    {provide: 'DEFAULT_LANGUAGE', useValue: environment.defaultLanguage}
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        CoreModule
+    ],
+    providers: [
+        HttpClientModule,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        { provide: 'BACKEND_API_URL', useValue: environment.backendApiUrl },
+        { provide: 'DEFAULT_LANGUAGE', useValue: environment.defaultLanguage }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
