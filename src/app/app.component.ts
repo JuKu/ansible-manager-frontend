@@ -21,6 +21,7 @@ export class AppComponent {
     {title: 'Templates', url: '/folder/Favorites', icon: 'book', permissions: [], show: false},
     {title: 'Projects', url: '/folder/Archived', icon: 'newspaper', permissions: [], show: false},
     {title: 'Teams', url: '/folder/Archived1', icon: 'people', permissions: [], show: false},
+    {title: 'Credentials', url: '/credentials', icon: 'key', permissions: [], show: false},
     {title: 'Repositories', url: '/folder/Trash', icon: 'code-slash', permissions: [], show: false},
     {title: 'Administration', url: '/admin/home', icon: 'construct', permissions: [], show: false},
     {title: 'Logout', url: '/logout', icon: 'log-out', permissions: [], show: false},
