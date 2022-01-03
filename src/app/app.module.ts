@@ -14,6 +14,7 @@ import {CoreModule} from './core/core.module';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './core/auth/auth.interceptor';
+import {LayoutModule} from './layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import {AuthInterceptor} from './core/auth/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    LayoutModule
   ],
   providers: [
     HttpClientModule,

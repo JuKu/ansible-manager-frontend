@@ -7,11 +7,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {IonicModule} from '@ionic/angular';
 import {CoreModule} from '../../core/core.module';
 import {OwnTeamsComponent} from './own-teams/own-teams.component';
+import {LayoutModule} from '../../layout/layout.module';
+import {CustomerTeamsComponent} from './customer-teams/customer-teams.component';
 
 
 @NgModule({
   declarations: [
-    OwnTeamsComponent
+    OwnTeamsComponent,
+    CustomerTeamsComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +23,8 @@ import {OwnTeamsComponent} from './own-teams/own-teams.component';
     TeamRoutingModule,
     HttpClientModule,
     IonicModule,
-    CoreModule
+    CoreModule,
+    LayoutModule
   ]
 })
 export class TeamModule {
