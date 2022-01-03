@@ -28,7 +28,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'team/**',
+    path: 'teams',
     loadChildren: () => import('./features/team/team.module').then(m => m.TeamModule),
     canActivate: [AuthGuard]
   },

@@ -6,10 +6,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicModule} from '@ionic/angular';
 import {CoreModule} from '../../core/core.module';
+import {OwnTeamsComponent} from './own-teams/own-teams.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    OwnTeamsComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
