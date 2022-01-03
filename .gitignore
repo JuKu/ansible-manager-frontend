@@ -812,3 +812,8 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+
+# from angular version 13, a .angular cache directory is generated.
+# by default the cache directory is enabled.
+# see also: https://stackoverflow.com/questions/69953135/clear-angular-cache-in-angular-folder
+.angular
