@@ -24,7 +24,6 @@ export class AppComponent {
     subPages: [
       {title: 'My teams', url: '/teams/own-teams', icon: 'people', permissions: []},
       {title: 'All teams of customer', url: '/teams/customer-teams', icon: 'people-circle', permissions: []},
-      {title: 'All teams of customer', url: '/teams/customer-teams', icon: 'people-circle', permissions: []},
       {title: 'Create new team', url: '/teams/add-team', icon: 'add-circle', permissions: []},
     ]},
     {title: 'Credentials', url: '/credentials', icon: 'key', permissions: [], show: false},
