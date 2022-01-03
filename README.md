@@ -24,3 +24,10 @@ An angular frontend for the ansible manager: https://github.com/JuKu/ansible-man
   - Problems with SSL dependencies (hashing issues)
     - https://github.com/vercel/next.js/issues/30078
     - use environmental option: `NODE_OPTIONS=--openssl-legacy-provider`
+    
+## Execute tests
+
+Run `ng test`
+
+Important! You have to use NodeJS 16.x.x, not the newest NodeJS 17 version!
+On NodeJS 17.x.x the environmental variable `NODE_OPTIONS=--openssl-legacy-provider` is required, but NodeJS 17.x.x is currently not supported by angular.
