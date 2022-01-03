@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   backendApiUrl: 'http://127.0.0.1:8080/',
-  defaultLanguage: 'de'
+  defaultLanguage: 'de',
+  versionName: '0.0.1 Pre-Alpha'
 };
 
 /*
