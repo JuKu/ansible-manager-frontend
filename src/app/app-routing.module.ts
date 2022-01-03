@@ -28,6 +28,11 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'team/**',
+    loadChildren: () => import('./features/team/team.module').then(m => m.TeamModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'error/error403',
     component: Error403Component
   },
