@@ -18,3 +18,9 @@ An angular frontend for the ansible manager: https://github.com/JuKu/ansible-man
 ## Dev Tools
 
   - https://angular.io/guide/devtools
+
+## Troubleshooting
+
+  - Problems with SSL dependencies (hashing issues)
+    - https://github.com/vercel/next.js/issues/30078
+    - use environmental option: `NODE_OPTIONS=--openssl-legacy-provider`
