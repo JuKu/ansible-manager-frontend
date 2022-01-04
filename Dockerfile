@@ -19,6 +19,8 @@ RUN npm install -g ionic
 RUN npm install
 COPY ./ /app/
 #RUN ng build --prod
+
+# create ionic production build
 RUN npm run-script build:prod
 
 FROM nginx:alpine
